@@ -11,3 +11,5 @@
 # Python has built-in trigonometric functions. To call them, use the following statement in your program to import
 #  them from the math package:
 # You can then invoke the trigonometric functions like the following examples:
+
+# Written by tavimori
