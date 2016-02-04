@@ -34,7 +34,7 @@ n = int(n)
 integrationResult = 0
 if n > 10000:
     print('It may takes a while...')
-for i in range(1, n+1):
+for i in range(1, n + 1):
     # print(i)
     x = a + (b - a) / n * (i - 1 / 2)
     integrationResult += (b - a) / n * eval(givenFunction)

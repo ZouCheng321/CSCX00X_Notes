@@ -19,6 +19,7 @@ def is_prime(int_to_be_judged):
             return False
     return True
 
+
 def print_a_list(list_to_be_printed):
     for print_nth_row in range(ceil(len(list_to_be_printed) / 8)):
         list_of_nth_row = list_to_be_printed[:8]

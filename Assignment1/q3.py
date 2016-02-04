@@ -10,7 +10,6 @@
 
 import math
 
-
 while True:
     m = input('Enter a number:')
     try:
@@ -21,5 +20,5 @@ while True:
 if m <= 0:
     print('n= 0')
 else:
-    n = int(math.sqrt(m))+1
-    print('n=',n)
+    n = int(math.sqrt(m)) + 1
+    print('n=', n)

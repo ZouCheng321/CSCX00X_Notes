@@ -18,3 +18,4 @@ while True:
 integerEnterByUser = str(integerEnterByUser)
 for i in integerEnterByUser:
     print(i)
+
