@@ -28,6 +28,7 @@ def print_a_list(list_to_be_printed):
 
 
 # Input Filtering
+"""
 while True:
     n = input('Enter a integer N:')
     try:
@@ -38,6 +39,8 @@ while True:
             print('It seems what you\'ve input is not an integer or smaller than 2')
     except:
         print('It seems what you\'ve input is not a number')
+"""
+n = input('Enter a integer N:')
 # Initializing the list of known prime numbers
 primeAlreadyKnown = []
 # Mapping all the possible numbers to find all primes
