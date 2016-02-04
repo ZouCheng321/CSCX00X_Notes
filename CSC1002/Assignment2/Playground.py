@@ -15,7 +15,7 @@ def find_plus(target_value, find_from):
 
 
 def input_plus(prompt, regex):
-    if
+    1+1
 
 
 
