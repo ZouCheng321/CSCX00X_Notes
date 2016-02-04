@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+
 # Question 6 (25% of this assignment): Given a function f(x), and a real interval [a, b], the numerical integration of
 #  f(x) over interval [a, b] can be calculated as:
 

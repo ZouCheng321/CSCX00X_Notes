@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+
 # Question 2 (15% of this assignment): Write a program that prompts the user to enter an integer and displays the
 #  number in reverse order. Here is a sample run:
 

@@ -1,3 +1,7 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+
+
 # Question 4 (15% of this assignment): Write a program to allow a user to input a number N, and print a table with N
 #  rows and 3 columns. In the mth row, your program should output three numbers: m, m+1, and mm+1. For example, when
 #  the user inputs N = 5, your program should output the following:
