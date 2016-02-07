@@ -10,11 +10,14 @@
 # Answer given by tavimori
 
 from functools import reduce
-from math import ceil
+from math import ceil, sqrt
 
 
 def is_prime(int_to_be_judged):
+    judge_border = int(sqrt(int_to_be_judged))
     for onePrimeNumber in primeAlreadyKnown:
+        if onePrimeNumber > judge_border:
+            return True
         if int_to_be_judged % onePrimeNumber == 0:
             return False
     return True
@@ -40,7 +43,7 @@ while True:
     except:
         print('It seems what you\'ve input is not a number')
 """
-n = input('Enter a integer N:')
+n = int(input('Enter a integer N:'))
 # Initializing the list of known prime numbers
 primeAlreadyKnown = []
 # Mapping all the possible numbers to find all primes
