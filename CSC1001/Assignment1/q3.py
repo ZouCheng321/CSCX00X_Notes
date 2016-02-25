@@ -12,8 +12,8 @@
 from minput import *
 
 
-m = input_regex('Enter a positive number:', r'^[1-9]\d*$',
-                'Should be a positive integer. Try again...')
+m = int(input_regex('Enter a positive number:', r'^[1-9]\d*$',
+                    'Should be a positive integer. Try again...'))
 n = 0
 while n * n <= m:
     n += 1

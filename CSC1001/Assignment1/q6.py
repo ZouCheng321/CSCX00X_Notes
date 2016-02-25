@@ -21,7 +21,7 @@
 from minput import *
 
 
-givenFunction = input_regex('Enter f(x)= ')
+givenFunction = input('Enter f(x)= ')
 a = float(input_regex('Enter the lower bound of integration: ', r'^-*[0-9,\.]+$',
                       'Should be a number. Try again...'))
 b = float(input_regex('Enter the upper bound of integration: ', r'^-*[0-9,\.]+$',
