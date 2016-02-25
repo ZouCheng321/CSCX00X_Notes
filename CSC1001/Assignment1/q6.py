@@ -22,9 +22,9 @@ from minput import *
 
 
 givenFunction = input_regex('Enter f(x)= ')
-a = float(input_regex('Enter the lower bound of integration: ', r'^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$',
+a = float(input_regex('Enter the lower bound of integration: ', r'^-*[0-9,\.]+$',
                       'Should be a number. Try again...'))
-b = float(input_regex('Enter the upper bound of integration: ', r'^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$',
+b = float(input_regex('Enter the upper bound of integration: ', r'^-*[0-9,\.]+$',
                       'Should be a number. Try again...'))
 n = int(input_regex('Enter the number of sub-intervals: ', r'^[1-9]\d*$', 'Should be a positive integer. Try again...'))
 # Initializing the result

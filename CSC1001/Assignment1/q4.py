@@ -11,7 +11,7 @@
 # Answer given by tavimori
 
 from minput import *
-n = int(input_regex('Enter a number N:',r'^[1-9]\d*|0$', 'Should be a positive integer. Try again...'))
+n = int(input_regex('Enter a number N:',r'^[1-9]\d*$', 'Should be a positive integer. Try again...'))
 print('m', 'm+1', 'm**(m+1)', sep='\t')
 for m in range(1, n + 1):
     print(m, m + 1, m ** (m + 1), sep='\t')
