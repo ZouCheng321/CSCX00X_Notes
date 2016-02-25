@@ -10,9 +10,19 @@
 
 # Answer given by tavimori
 
-finalAccountValue = input('Enter the final account value: ')
-annualInterestRate = input('Enter the annual interest rate: ')
-numberOfYears = input('Enter the number of years: ')
+
+from minput import *
+
+
+finalAccountValue = input_regex('Enter the final account value: ',
+                                r"""
+                                       ^(([0-9]+\.[0-9]*[1-9][0-9]*)|([0-9]*[1-9][0-9]*\.[0-9]+)|([0-9]*[1-9][0-9]*))$'
+                                """,
+                                'Should be a positive number. Try again...')
+annualInterestRate = input_regex('Enter the annual interest rate: ',
+                                 r'^-?([1-9]\d*\.\d*|0\.\d*[1-9]\d*|0?\.0+|0)$',
+                                 'Should be a number. Try again...')
+numberOfYears = input_regex('Enter the number of years: ', r'^[1-9]\d*$', 'Should be a positive integer. Try again...')
 finalAccountValue = float(finalAccountValue)
 annualInterestRate = float(annualInterestRate)
 numberOfYears = float(numberOfYears)

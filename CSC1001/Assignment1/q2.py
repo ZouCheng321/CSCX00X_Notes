@@ -7,15 +7,10 @@
 
 # Answers given by tavimori
 
+from minput import *
 
-while True:
-    integerEnterByUser = input('Enter an integer:')
-    try:
-        integerEnterByUser = int(integerEnterByUser)
-        break
-    except:
-        print('It seems what you\'ve input is not an integer...')
-integerEnterByUser = str(integerEnterByUser)
+
+integerEnterByUser = input_regex('Enter an integer:', r'^[1-9]\d*$', 'Should be a positive integer. Try again...')
 for i in integerEnterByUser:
     print(i)
 

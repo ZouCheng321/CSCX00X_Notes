@@ -9,19 +9,17 @@
 
 # Answer given by tavimori
 
+
 from math import sqrt, ceil
 
 from minput import *
 
 
-def is_prime(int_to_be_judged):
-    judge_border = int(sqrt(int_to_be_judged))
-    for onePrimeNumber in primeAlreadyKnown:
-        if onePrimeNumber > judge_border:
-            return True
-        if int_to_be_judged % onePrimeNumber == 0:
-            return False
-    return True
+def sieve(sieve_num):
+    coefficient = 2
+    while sieve_num * coefficient <= n:
+        data[sieve_num * coefficient - 1] = False
+        coefficient += 1
 
 
 def print_a_list(list_to_be_printed):
@@ -30,11 +28,18 @@ def print_a_list(list_to_be_printed):
         del list_to_be_printed[:8]
         print(''.join(map(lambda x: str(x)+'\t', list_of_nth_row)))
 
+
 n = int(input_regex('Enter a integer N: ', r'^[1-9]\d*$', 'Should be a positive integer. Try again...'))
-# Initializing the list of known prime numbers
-primeAlreadyKnown = []
-# Mapping all the possible numbers to find all primes
-for i in range(2, n):
-    if is_prime(i):
-        primeAlreadyKnown.append(i)
-print_a_list(primeAlreadyKnown)
+border = int(sqrt(n))
+data = [True] * n
+data[0] = False
+for index in range(1, border):
+    if not data[index]:
+        continue
+    sieve(index + 1)
+p = []
+data[n - 1] = False
+for i in range(n):
+    if data[i]:
+        p.append(i + 1)
+print_a_list(p)
