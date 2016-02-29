@@ -6,7 +6,7 @@
 __author__ = 'Licheng Mao'
 
 
-def input_regex(prompt, regex, error_str):
+def input_regex(prompt, regex, error_str='Not valid input'):
     import re
     input_value = input(prompt)
     if re.match(regex, input_value):

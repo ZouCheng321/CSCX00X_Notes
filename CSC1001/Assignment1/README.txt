@@ -5,6 +5,10 @@ This assignment is done by Licheng Mao (ID: 115010202)
     * Question 1:
       1. Run python file q1.py
       2. Follow the instruction, the UI is the same with the demo given.
+      Sample:
+      ```Python
+      from AssTools.getInput import *method
+      ```
 
     * Question 2:
       1. Run python file q2.py
