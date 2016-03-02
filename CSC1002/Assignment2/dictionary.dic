@@ -1,6 +1,6 @@
 # Source-http://www.wordfrequency.info/
 # This file is download from http://www.rupert.id.au/resources/4000-most-common-english-words-csv.csv
-# All single-letter words has been removed.
+# All single-letter or bar-inside words have been removed.
 the
 be
 and
@@ -2123,7 +2123,6 @@ breakfast
 strongly
 engineering
 luck
-so-called
 constant
 clinic
 veteran
