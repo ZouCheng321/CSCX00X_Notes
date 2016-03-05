@@ -220,16 +220,16 @@ def expr_calc(list1):
 
 def deal_with_input_line(input_line):
     debug('[DEBUG]: Debug mode is on...')
-    debug('[DEBUG]: Raw input is: \n\t\'{}\''.format(input_line))
+    debug('[DEBUG]: Raw input is: \n\t\t\'{}\''.format(input_line))
     input_line = expr_extract(input_line)
-    debug('[DEBUG]: Extracted input is: \n\t\'{}\''.format(input_line))
+    debug('[DEBUG]: Extracted input is: \n\t\t\'{}\''.format(input_line))
     input_line = expr_unify(input_line)
     input_line = ''.join([input_line[i][1] for i in range(len(input_line))])
     input_line = expr_extract(input_line)
-    debug('[DEBUG]: Extracted input(unified) is \n\t\'{}\''.format(input_line))
+    debug('[DEBUG]: Extracted input(unified) is \n\t\t\'{}\''.format(input_line))
     input_line, line_dictionary = expr_variable_to_be_array(input_line)
     input_line = expr_calc(input_line)
-    debug('[DEBUG]: Abstracted line is {}, \n\twith dictionary {}'.format(input_line, line_dictionary))
+    debug('[DEBUG]: Abstracted line is {}, \n\t\twith dictionary {}'.format(input_line, line_dictionary))
     return input_line, line_dictionary
 
 
@@ -287,25 +287,7 @@ def calc_area(length1, length2, length3):
     return sqrt(p * (p - length1) * (p - length2) * (p - length3))
 
 while True:
-    isDebug = True
-    # a = input('Any expr:').lower()
-    # # a = '2x= 5y+1'
-    # b = expr_extract(a)
-    # b = expr_unify(b)
-    # b = ''.join([b[i][1] for i in range(len(b))])
-    # print(b)
-    # b = expr_extract(b)
-    # b, dictionary = expr_variable_to_be_array(b)
-    # print(b)
-    # b = expr_calc(b)
-    # print(b)
-    # for i in dictionary:
-    #     # print(i, '=', b[dictionary[i]])
-    #     pass
-    # print('The input is simplified as ({})x+({})y+{}=0'.format(b[dictionary['x']],
-    #                                                            b[dictionary['y']],
-    #                                                            b[dictionary['const']]))
-    # 
+    isDebug = False
     line = [0, 0, 0]
     line_dic = [0, 0, 0]
 
@@ -319,7 +301,7 @@ while True:
     for i in range(3):
         line[i] = input('line{}'.format(i))
         line[i], line_dic[i] = deal_with_input_line(line[i])
-        print('The input is simplified as ({})x+({})y+{}=0'.format(if_exist("line[i][line_dic[i]['x']]"),
+        print('The input is simplified as ({})x+({})y+({})=0'.format(if_exist("line[i][line_dic[i]['x']]"),
                                                                    if_exist("line[i][line_dic[i]['y']]"),
                                                                    if_exist("line[i][line_dic[i]['const']]")
                                                                    )
@@ -329,18 +311,7 @@ while True:
                    if_exist("line[i][line_dic[i]['y']]"),
                    if_exist("line[i][line_dic[i]['const']]")
                    )
-        print(line[i])
-    # for i in range(3):
-    #
-    # line1 = input('line 1:')
-    # line1, line1_dic = deal_with_input_line(line1)
-    # line1 = (line1[line1_dic['x']], line1[line1_dic['y']], line1[line1_dic['const']])
-    # line2 = input('line 2:')
-    # line2, line2_dic = deal_with_input_line(line2)
-    # line2 = (line2[line2_dic['x']], line2[line2_dic['y']], line2[line2_dic['const']])
-    # line3 = input('line 3:')
-    # line3, line3_dic = deal_with_input_line(line3)
-    # line3 = (line3[line3_dic['x']], line3[line3_dic['y']], line3[line3_dic['const']])
+        # print(line[i])
     p1 = list(intersection_point_find(line[0], line[1]))
     p2 = list(intersection_point_find(line[1], line[2]))
     p3 = list(intersection_point_find(line[0], line[2]))
