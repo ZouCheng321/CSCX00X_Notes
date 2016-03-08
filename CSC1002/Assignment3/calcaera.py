@@ -287,7 +287,7 @@ def calc_area(length1, length2, length3):
     return sqrt(p * (p - length1) * (p - length2) * (p - length3))
 
 while True:
-    isDebug = False
+    isDebug = True
     line = [0, 0, 0]
     line_dic = [0, 0, 0]
 
