@@ -27,7 +27,7 @@ for element in lines:
         list1.append(Antonym)
     else:
         list1.append('no')
-    else:#count words,find e.g and meanings
+    # else:#count words,find e.g and meanings
         n=n+1
         m=element.find(':')
         n=element.find('-')
@@ -36,8 +36,8 @@ for element in lines:
         meanings=element[m+1:n]
         listn.append(meanings)
         example=element[n+1:]
-        listn.append(example)     
-def main(n):#to write the information in a fomat 
+        listn.append(example)
+def main(n):#to write the information in a fomat
     file1.write(n[0]+'\n')
     file1.write(' '*5+n[1]+'\n')
     file1.write(' '*5+'E.g.:'+n[2]+'\n')
@@ -53,13 +53,13 @@ def main(n):#to write the information in a fomat
         file1,write(' '*8+'Antonym:'+'\n')
         for antonym in n[3][1:]:
             file1.write(' '*8+antonym+'\n')
-    
+
 for n in listn:
     main(n)
 file2.close()
-    
-    
-    
-        
-        
-        
+
+
+
+
+
+
