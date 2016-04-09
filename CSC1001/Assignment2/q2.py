@@ -8,7 +8,8 @@ Question 2 (15% of this assignment):
  Display 10 numbers per line and align the numbers properly, as follows:
 """
 
-# !!! Some of the core algorithm is
+# !!! Some of the core algorithm is refer to the Assignment1
+
 from math import sqrt, ceil
 
 
@@ -26,7 +27,6 @@ def print_a_list(list_to_be_printed):
         print(''.join(map(lambda x: str(x)+'\t', list_of_nth_row)))
 
 
-# n = int(input_regex('Enter a integer N: ', r'^[1-9]\d*$', 'Should be a positive integer. Try again...'))
 n = 10000
 border = int(sqrt(n))
 data = [True] * n

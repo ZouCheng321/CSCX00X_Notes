@@ -14,8 +14,13 @@ square root of n. If not, nextGuess becomes lastGuess and the approximation proc
 following function that returns the square root of n.
 """
 
-n = float(input('n'))
-nextGuess, lastGuess = 2, 1
-while nextGuess != lastGuess:
-    lastGuess, nextGuess = nextGuess, (lastGuess + (n / lastGuess)) / 2
-print(nextGuess)
+n = input('n')
+try:
+    n = float(n)
+    nextGuess, lastGuess = 2, 1
+    while nextGuess != lastGuess:
+        lastGuess, nextGuess = nextGuess, (lastGuess + (n / lastGuess)) / 2
+    print(nextGuess)
+except Exception:
+    print('Error')
+    exit()
