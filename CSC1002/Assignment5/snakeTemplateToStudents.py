@@ -51,7 +51,7 @@ class Snake(object):
             direction_index = 2
         elif self.__direction == 'W':
             direction_index = 3
-        additional_segment = [self.__body_segment[0][0] + directionArray[direction_index][0], 
+        additional_segment = [self.__body_segment[0][0] + directionArray[direction_index][0],
                               self.__body_segment[0][1] + directionArray[direction_index][1]]
         self.__body_segment.insert(0, additional_segment)
         self.__body_segment.pop()
@@ -121,6 +121,7 @@ def is_food_in_way():
         return True
     else:
         return False
+
 
 snake = Snake()
 food = [5, 10]  # Initial position of food
