@@ -15,6 +15,7 @@ WINDOW_WIDTH = 15
 WINDOW_HEIGHT = 10
 CELL_WIDTH = 40
 CELL_HEIGHT = 40
+keep_on_moving = True
 SNAKE_INITIAL_SEGMENT = [[WINDOW_HEIGHT // 2, WINDOW_WIDTH // 2]]
 # The approximate center point as the snake initial position
 directionArray = [[-1, 0], [0, 1], [1, 0], [0, -1]]
@@ -43,18 +44,23 @@ class Snake(object):
         self.__length += 1
 
     def move(self):
-        if self.__direction == 'N':
-            direction_index = 0
-        elif self.__direction == 'E':
-            direction_index = 1
-        elif self.__direction == 'S':
-            direction_index = 2
-        elif self.__direction == 'W':
-            direction_index = 3
+        direction_index = {'N': 0, 'E': 1, 'S': 2, 'W': 3}[self.__direction]
         additional_segment = [self.__body_segment[0][0] + directionArray[direction_index][0],
                               self.__body_segment[0][1] + directionArray[direction_index][1]]
-        self.__body_segment.insert(0, additional_segment)
-        self.__body_segment.pop()
+        # if additional_segment in self.__body_segment:
+        global keep_on_moving
+        if additional_segment[0] < 0 or additional_segment[0] > WINDOW_HEIGHT-1 or additional_segment[1] < 0 or \
+           additional_segment[1] > WINDOW_WIDTH-1:
+            print('Stop')
+            labelText.configure(text='Snake gets out of the window! Final Length: %s ' % self.get_length())
+            keep_on_moving = False
+        elif additional_segment in self.__body_segment:
+            print('Self overlay')
+            keep_on_moving = False
+            labelText.configure(text='Snake bites itself! Final Length: %s ' % self.get_length())
+        else:
+            self.__body_segment.insert(0, additional_segment)
+            self.__body_segment.pop()
 
 
 def draw_background():
@@ -88,32 +94,29 @@ def go_go_go():
     Continously movement of the snake
     """
     global food
-    keep_on_moving = True
-    if is_food_in_way():
-        snake.add_body_segment(food)
-        labelText.configure(text='Snake Length: %s' % snake.get_length())
-        labelArray[food[0]][food[1]].configure(image='')
-        food = [random.randint(1, WINDOW_HEIGHT - 2), random.randint(1, WINDOW_WIDTH - 2)]
-    snake.move()
-    draw_background()
-    draw_snake()
-    draw_food()
-    if keep_on_moving:  # Hint: this is related to question (2) and (3)
-        root.after(500, go_go_go)
+    if keep_on_moving:
+        if is_food_in_way():
+            snake.add_body_segment(food)
+            labelText.configure(text='Snake Length: %s' % snake.get_length())
+            labelArray[food[0]][food[1]].configure(image='')
+            while True:
+                food = [random.randint(1, WINDOW_HEIGHT - 2), random.randint(1, WINDOW_WIDTH - 2)]
+                print(food.__repr__())
+                if food not in snake.get_body_segment():
+                    break
+        snake.move()
+        draw_background()
+        draw_food()
+        draw_snake()
+        if keep_on_moving:  # Hint: this is related to question (2) and (3)
+            root.after(200, go_go_go)
 
 
 def is_food_in_way():
     """
     If food is in the next position ahead, return True. Otherwise, return False.
     """
-    if snake.get_direction() == 'N':
-        direction_index = 0
-    elif snake.get_direction() == 'E':
-        direction_index = 1
-    elif snake.get_direction() == 'S':
-        direction_index = 2
-    elif snake.get_direction() == 'W':
-        direction_index = 3
+    direction_index = {'N': 0, 'E': 1, 'S': 2, 'W': 3}[snake.get_direction()]
     body_segment = snake.get_body_segment()
     head = body_segment[0]
     next_head = [head[0] + directionArray[direction_index][0], head[1] + directionArray[direction_index][1]]
@@ -134,16 +137,17 @@ labelArray = []
 for i in range(WINDOW_HEIGHT):
     labelRow = []
     for j in range(WINDOW_WIDTH):
-        labelRow.append(Label(root, text='%s,%s' % (i, j), bg='yellow'))
+        # labelRow.append(Label(root, text='%s,%s' % (i, j), bg='yellow'))
+        labelRow.append(Label(root, bg='yellow'))
         labelRow[j].place(x=j * CELL_WIDTH, y=i * CELL_HEIGHT + CELL_HEIGHT, width=CELL_WIDTH, height=CELL_HEIGHT)
     labelArray.append(labelRow[:])
 draw_background()
 draw_snake()
 go_go_go()
 
-root.bind("<KeyRelease-Up>", lambda: snake.set_direction('N'))
-root.bind("<KeyRelease-Down>", lambda: snake.set_direction('S'))
-root.bind("<KeyRelease-Left>", lambda: snake.set_direction('W'))
-root.bind("<KeyRelease-Right>", lambda: snake.set_direction('E'))
+root.bind("<KeyRelease-Up>", lambda x: snake.set_direction('N'))
+root.bind("<KeyRelease-Down>", lambda x: snake.set_direction('S'))
+root.bind("<KeyRelease-Left>", lambda x: snake.set_direction('W'))
+root.bind("<KeyRelease-Right>", lambda x: snake.set_direction('E'))
 
 root.mainloop()
