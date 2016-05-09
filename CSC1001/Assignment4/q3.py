@@ -17,6 +17,13 @@ import SLList
 
 def quick_sort(node_start):
     def list_quick_sort(l, low, high):
+        """
+        Quick sort a list.
+        :param l:
+        :param low:
+        :param high:
+        :return:
+        """
         i = low
         j = high
         if i >= j:

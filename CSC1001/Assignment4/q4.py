@@ -16,30 +16,35 @@ def HanoiTower(n)
 Here n represents the number of disks. For example, when n = 3 your function should output:
 """
 
-n = 3
+
+def HanoiTower(height, move_from='A', move_to='C'):
+    import stack
+
+    n_stack = stack.ListStack()
+    n_stack.push((height, move_from, move_to))
+    while not n_stack.is_empty():
+        prev = n_stack.pop()
+        if prev[0] > 1:
+            # Change the procedure of move n from a to c into 3 steps.
+            # (n-1) a to b; 1 a to c; (n-1) b to c
+            n_stack.push((prev[0] - 1, 'ABC'.replace(prev[1], '').replace(prev[2], ''), prev[2]))
+            n_stack.push((1, prev[1], prev[2]))
+            n_stack.push((prev[0] - 1, prev[1], 'ABC'.replace(prev[1], '').replace(prev[2], '')))
+        else:
+            print(prev[1], '-->', prev[2])
 
 
-def HanoiTower(n, move_to='C', move_from='A'):
-    if n == 1:
-        print(move_from+' --> ' + move_to)
-    elif n > 1:
-        HanoiTower(n-1, move_to='ABC'.replace(move_from, '').replace(move_to, ''), move_from=move_from)
-        print(move_from+' --> ' + move_to)
-        HanoiTower(n-1, move_from='ABC'.replace(move_from, '').replace(move_to, ''), move_to=move_to)
+def main():
+    print('You are running this independently. Now in sample mode.')
+    print('The following code will be executed.')
+    print(
+        """
+        n = 6
+        HanoiTower(n)
+        """
+    )
+    n = 6
+    HanoiTower(n)
 
-
-import stack
-n_stack = stack.ListStack()
-n_stack.push((n, 'A', 'C'))
-while not n_stack.is_empty():
-    prev = n_stack.pop()
-    if prev[0] > 1:
-        n_stack.push((prev[0] - 1, 'ABC'.replace(prev[1], '').replace(prev[2], ''), prev[2]))
-        n_stack.push((1, prev[1], prev[2]))
-        n_stack.push((prev[0] - 1, prev[1], 'ABC'.replace(prev[1], '').replace(prev[2], '')))
-    else:
-        print(prev[1], '-->', prev[2])
-
-
-
-# HanoiTower(n)
+if __name__ == '__main__':
+    main()
