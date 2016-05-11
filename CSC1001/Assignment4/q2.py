@@ -101,29 +101,55 @@ def calc(expression_tree, start_node=None):
         return start_node.element
 
 
-print('You are running this independently. Now in sample mode.')
-print('The following code will be executed.')
-print(
-    """
-    a = LBTree()
-    node_1 = Node('1')
-    node_2 = Node('2')
-    b = Node('-')
-    b.left = node_1
-    b.right = node_2
-    node_1.parent = b
-    node_2.parent = b
-    a.root = b
-    print('The calc result is ', calc(a))
-    """
-)
-a = LBTree()
-node_1 = Node('1')
-node_2 = Node('2')
-b = Node('-')
-b.left = node_1
-b.right = node_2
-node_1.parent = b
-node_2.parent = b
-a.root = b
-print('The calc result is ', calc(a))
+def main():
+    print('You are running this independently. Now in sample mode.')
+    print('The following code will be executed.')
+    print(
+        """
+        p = LBTree()
+        p.add_root('*')
+        p.add_left(p.root,'/')
+        p.add_right(p.root,8)
+        p.add_left(p.root.left,'*')
+        p.add_right(p.root.left,'+')
+        p.add_left(p.root.left.left,'+')
+        p.add_right(p.root.left.left,'-')
+        p.add_left(p.root.left.left.left,5)
+        p.add_right(p.root.left.left.left,2)
+        p.add_left(p.root.left.left.right,2)
+        p.add_right(p.root.left.left.right,1)
+        p.add_left(p.root.left.right,'+')
+        p.add_right(p.root.left.right,'-')
+        p.add_left(p.root.left.right.left,2)
+        p.add_right(p.root.left.right.left,9)
+        p.add_left(p.root.left.right.right,'-')
+        p.add_right(p.root.left.right.right,1)
+        p.add_left(p.root.left.right.right.left,7)
+        p.add_right(p.root.left.right.right.left,2)
+        print('The calc result is :', calc(p))
+        """
+    )
+    p = LBTree()
+    p.add_root('*')
+    p.add_left(p.root, '/')
+    p.add_right(p.root, 8)
+    p.add_left(p.root.left, '*')
+    p.add_right(p.root.left, '+')
+    p.add_left(p.root.left.left, '+')
+    p.add_right(p.root.left.left, '-')
+    p.add_left(p.root.left.left.left, 5)
+    p.add_right(p.root.left.left.left, 2)
+    p.add_left(p.root.left.left.right, 2)
+    p.add_right(p.root.left.left.right, 1)
+    p.add_left(p.root.left.right, '+')
+    p.add_right(p.root.left.right, '-')
+    p.add_left(p.root.left.right.left, 2)
+    p.add_right(p.root.left.right.left, 9)
+    p.add_left(p.root.left.right.right, '-')
+    p.add_right(p.root.left.right.right, 1)
+    p.add_left(p.root.left.right.right.left, 7)
+    p.add_right(p.root.left.right.right.left, 2)
+    print('The calc result is :', calc(p))
+
+if __name__ == '__main__':
+    main()
