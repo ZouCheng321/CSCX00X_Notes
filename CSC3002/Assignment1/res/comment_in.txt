@@ -1,0 +1,16 @@
+
+// static constants
+static const double LINE_TOLERANCE = 1.5;
+static const double ARC_TOLERANCE = 2.5;
+//static const double DEFAULT_CORNER = 10;
+static const std::string DEFAULT_GLABEL_FONT = "Dialog-13";
+/"//"233333333
+"
+/* //
+ *
+ \"akhsakjgjkla
+ "//ll
+//Ret/*urns the square of the distance between two points.
+ * Used/* when checking to see if a line touches a given point.
+ *//This is test.
+static double dsq(double x0, double y0, double x1, double y1);
