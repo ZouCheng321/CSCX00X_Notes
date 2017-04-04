@@ -1,11 +1,12 @@
 #include <iostream>
 #include "vector.h"
 
-int findMajorityElement(Vector<int> &vec){
+int findMajorityElement(Vector<int> &vec) {
     int cand_count = 0;
     int candidate = -1;
-    const int half = vec.size()/2;
-    for(auto &element: vec){
+    const auto half = vec.size()/2;
+
+    for (auto &element: vec) {
         if (element==candidate) cand_count++;
         else {
             if (--cand_count<=0){
@@ -14,8 +15,9 @@ int findMajorityElement(Vector<int> &vec){
             }
         }
     }
+
     cand_count=0;
-    for(auto &element: vec){
+    for (auto &element: vec) {
         if (element==candidate) cand_count++;
     }
 
