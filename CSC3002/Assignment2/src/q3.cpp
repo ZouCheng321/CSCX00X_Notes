@@ -6,7 +6,7 @@ int findMajorityElement(Vector<int> &vec) {
     int candidate = -1;
     const auto half = vec.size()/2;
 
-    for (auto &element: vec) {
+    for (const auto &element: vec) {
         if (element==candidate) cand_count++;
         else {
             if (--cand_count<=0){
@@ -17,9 +17,8 @@ int findMajorityElement(Vector<int> &vec) {
     }
 
     cand_count=0;
-    for (auto &element: vec) {
+    for (const auto &element: vec) {
         if (element==candidate) cand_count++;
     }
-
     return cand_count>half? candidate: -1;
 }

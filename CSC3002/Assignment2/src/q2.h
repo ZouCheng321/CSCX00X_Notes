@@ -10,7 +10,7 @@ const int WINNING_POSITION = 1000;
 const int LOSING_POSITION = -WINNING_POSITION;
 const int MAX_DEPTH = 10;
 
-typedef int Move;
+typedef int Move; // move from 0-8
 
 enum Player {EMPTY, HUMAN, COMPUTER};
 

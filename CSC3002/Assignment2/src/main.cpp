@@ -13,7 +13,7 @@
 #include "q7.h"
 
 int main() {
-    std::cout << "Hello, world!" << std::endl;\
+    std::cout << "Hello, world!" << std::endl;
     std::cout << "q1" << std::endl;
     GWindow gw;
     double xc = gw.getWidth() / 2;
@@ -24,7 +24,6 @@ int main() {
     std::cout << "q2" << std::endl;
     TicTacToe game;
     game.play();
-//    game.printInstruction();
     std::cout << "q2 done" << std::endl;
     std::cout << "q3" << std::endl;
     Vector<int> q3v{1,5,3,4,5,5,5,5,6,7,5,5};
@@ -32,12 +31,16 @@ int main() {
               << std::to_string(findMajorityElement(q3v)) << std::endl;
     std::cout << "q3 done" << std::endl;
     std::cout << "q4" << std::endl;
-    std::cout << "q4 to be done" << std::endl;
+    q4();
+    std::cout << "q4 done" << std::endl;
     std::cout << "q5" << std::endl;
+
     std::cout << "q5 to be done" << std::endl;
     std::cout << "q6" << std::endl;
+
     std::cout << "q6 to be done" << std::endl;
     std::cout << "q7" << std::endl;
+
     std::cout << "q7 to be done" << std::endl;
 
     return 0;

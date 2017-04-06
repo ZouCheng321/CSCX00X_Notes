@@ -128,6 +128,10 @@ Move TicTacToe::getUserMove(){
     std::cout << "Your move." << std::endl;
     while (true) {
         Move move = getInteger("What square?")-1;
+        if (move<0 || move >8 || chessboard[move/3][move%3] != EMPTY) {
+            std::cout << "Please select a valid number." << std::endl;
+            continue;
+        }
         return move;
     }
 }
@@ -157,7 +161,6 @@ void TicTacToe::generateMoveList(Vector<Move> &moveList){
         for (int j=0; j<3; j++){
             if(chessboard[i][j] == EMPTY) moveList.add(i*3+j);
         }
-//    f("movelist %i\n", moveList.size());
     }
 }
 
@@ -175,7 +178,6 @@ Move TicTacToe::findBestMove(int depth, int &rating) {
         int moveRating = evaluatePosition(depth + 1);
         if (moveRating < minRating) {
             bestMove = move;
-//            f("rating%i\n", moveRating);
             minRating = moveRating;
         }
         currentPlayer=opponent(currentPlayer);
