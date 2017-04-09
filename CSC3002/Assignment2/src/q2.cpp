@@ -29,7 +29,6 @@ void TicTacToe::play() {
         announceResult();
     }
 
-
 void TicTacToe::printInstruction() {
     std::cout << "Welcome to TicTacToe, the game of three in a row." << std::endl;
     std::cout << "I'll be X, and you'll be O." << std::endl;
