@@ -2,6 +2,8 @@
 #ifndef _intarray_h
 #define _intarray_h
 
+#include <exception>
+
 class IntArray {
 public:
 

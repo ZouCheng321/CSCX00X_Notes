@@ -1,6 +1,14 @@
 #include "intarray.h"
 #include "error.h"
 
+class cscerror: public std::exception
+{
+  virtual const char* what() const throw()
+  {
+    return "csc3002 - Size error";
+  }
+} sizeOver;
+
 IntArray::IntArray() {
 //    IntArray(INITIAL_CAPACITY);
     capacity = INITIAL_CAPACITY;
@@ -22,10 +30,12 @@ int IntArray::size() const {
 }
 
 int IntArray::get(int i) {
+    if (i>=size()) throw sizeOver;
     return array[i];
 }
 
 void IntArray::put(int k, int value) {
+    if (k>=size()) throw sizeOver;
     array[k] = value;
 }
 

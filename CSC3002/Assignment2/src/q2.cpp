@@ -9,6 +9,10 @@ Player opponent(Player player) {
     return (player == HUMAN) ?  COMPUTER : HUMAN;
 }
 
+std::string getPlayerNotation(Player player){
+    return (player==EMPTY)? " ": (player==HUMAN)? "O": "X";
+}
+
 void TicTacToe::play() {
         initGame();
         Move move = getComputerMove();
@@ -33,7 +37,6 @@ void TicTacToe::printInstruction() {
     std::cout << "Welcome to TicTacToe, the game of three in a row." << std::endl;
     std::cout << "I'll be X, and you'll be O." << std::endl;
     std::cout << "The squares are numbered like this:" << std::endl;
-//    std::cout << "***RESERVED for sample***" << std::endl;
     displaySampleChessboard();
     return;
 }
@@ -50,7 +53,9 @@ Player TicTacToe::winner(){
         // check column
         if (chessboard[0][i] != EMPTY && chessboard[0][i] == chessboard[1][i] && chessboard[0][i] == chessboard[2][i]) return chessboard[0][i];
     }
+    //check "\" type diag
     if (chessboard[0][0] != EMPTY && chessboard[0][0] == chessboard[1][1] && chessboard[0][0] == chessboard[2][2]) return chessboard[0][0];
+    //check "/" type diag
     if (chessboard[2][0] != EMPTY && chessboard[2][0] == chessboard[1][1] && chessboard[2][0] == chessboard[0][2]) return chessboard[2][0];
     return EMPTY;
 }
@@ -59,14 +64,10 @@ bool TicTacToe::gameIsOver(){
     if (winner()!= EMPTY) return true;
     for (int i=0; i<3; i++) {
         for (int j=0; j<3; j++) {
-            if (chessboard[i][j] == EMPTY) return false;
+            if (chessboard[i][j] == EMPTY) return false; // at least one pane is empty
         }
     }
-    return true;
-}
-
-std::string getPlayerNotation(Player player){
-    return (player==EMPTY)? " ": (player==HUMAN)? "O": "X";
+    return true; // all panes are occupied
 }
 
 void TicTacToe::displayChessboard(){
@@ -147,7 +148,6 @@ void TicTacToe::announceResult(){
     else {
         std::cout << "You win." << std::endl;
     }
-//    std::cout << "Happy to announce the result!" << std::endl;
 }
 
 Move TicTacToe::findBestMove() {
@@ -187,7 +187,8 @@ Move TicTacToe::findBestMove(int depth, int &rating) {
 }
 
 int TicTacToe::evaulateStaticPosition(){
-    return (winner()==EMPTY)? 0: (winner()==currentPlayer)? 1 : -1;
+//    return (winner()==EMPTY)? 0: (winner()==currentPlayer)? 1 : -1;
+    return (winner()==EMPTY)? 0: -1;
 }
 
 int TicTacToe::evaluatePosition(int depth) {
