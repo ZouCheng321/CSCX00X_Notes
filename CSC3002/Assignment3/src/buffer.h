@@ -1,5 +1,5 @@
-#ifndef _editorBuffer_h
-#define _editorBuffer_h
+#ifndef _buffer_h
+#define _buffer_h
 
 #include <string>
 

@@ -1,5 +1,5 @@
 #include <iostream>
-#include "editorBuffer.h"
+#include "buffer.h"
 
 
 

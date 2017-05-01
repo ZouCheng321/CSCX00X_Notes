@@ -1,6 +1,6 @@
 
 #include <cctype>
-#include "editorBuffer.h"
+#include "buffer.h"
 #include "foreach.h"
 #include "simpio.h"
 
@@ -12,6 +12,7 @@ int q1() {
     EditorBuffer buffer;
     while (true) {
         std::string cmd = getLine("*");
+        if (cmd == "Q" || cmd == "q") break;
         if (cmd != "") executeCommand(buffer, cmd);
     }
     return 0;
@@ -30,7 +31,7 @@ void executeCommand(EditorBuffer & buffer, std::string line) {
         case 'J': buffer.moveCursorToStart(); displayBuffer(buffer); break;
         case 'E': buffer.moveCursorToEnd(); displayBuffer(buffer); break;
         case 'H': printHelpText(); break;
-    case 'Q': std::exit(0);
+        case 'Q': std::exit(0);
         default: std::cout << "Illegal command" << std::endl; break;
     }
 }
