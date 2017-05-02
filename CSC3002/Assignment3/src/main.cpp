@@ -8,23 +8,9 @@
 #include "q2.h"
 #include "q3.h"
 #include "q4.h"
+#include "q5.h"
 
 int main() {
-
-
-//    TokenScanner scanner;
-//    scanner.ignoreWhitespace();
-//    scanner.scanNumbers();
-//    scanner.scanStrings();
-
-//    scanner.setInput(getLine("***> "));
-//    std::cout << scanner.hasMoreTokens() << std::endl;
-//    std::cout << scanner.getStringValue(scanner.nextToken()) <<
-//                 std::endl;
-//    std::cout << scanner.hasMoreTokens() << std::endl;
-//    std::cout << std::stoi(scanner.getStringValue(scanner.nextToken())) <<
-//                 std::endl;
-
 
     std::cout << "Assignment3" << std::endl;
     std::cout << "By Mao Licheng" << std::endl;
@@ -34,7 +20,7 @@ int main() {
 
     std::cout << "### q1 ###" << std::endl;
     q1();
-    std::cout << "### q1 to be done ###" << std::endl;
+    std::cout << "### q1 done ###" << std::endl;
 
 
     std::cout << "### q2 ###" << std::endl;
@@ -42,7 +28,7 @@ int main() {
         q2::q2();
     }
     catch (int e) {};
-    std::cout << "### q2 to be done ###" << std::endl;
+    std::cout << "### q2 done ###" << std::endl;
 
 
     std::cout << "### q3 ###" << std::endl;
@@ -50,17 +36,17 @@ int main() {
         q3::q3();
     }
     catch (int e) {};
-    std::cout << "### q3 tobe done ###" << std::endl;
+    std::cout << "### q3 done ###" << std::endl;
 
 
     std::cout << "### q4 ###" << std::endl;
     q4();
-    std::cout << "### q4 to be done ###" << std::endl;
+    std::cout << "### q4 done ###" << std::endl;
 
 
     std::cout << "### q5 ###" << std::endl;
-
-    std::cout << "### q5 to be done ###" << std::endl;
+    q5();
+    std::cout << "### q5 done ###" << std::endl;
 
     return 0;
 }

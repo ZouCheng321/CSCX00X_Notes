@@ -1,57 +1,78 @@
+#include <string>
 #include "graph.h"
 #include "set.h"
 #include "q5.h"
 
+class IntNode;
+class IntArc;
 
 
-//template <NodeType, ArcType>
-template <typename NodeType, typename ArcType>
-bool isBipartite(Graph<NodeType, ArcType> &g) {
-    Set<NodeType *> partitionSet[2];
-    Set<NodeType *> visited;
-    bool flag = true;
-    visitUsingDFS(flag, g.getNodeSet(), 1, visited, partitionSet);
-    return flag;
+class IntNode {
 
-//void depthFirstSearch(Node *node) {
-//    Set<Node *>
-}
+public:
+//   string getName() {
+//      return name;
+//   }
 
-//template <NodeType, ArcType>
-template <typename NodeType, typename ArcType>
-void visitUsingDFS(bool &flag, NodeType *node, const int partition, Set<NodeType *> & visited, Set<NodeType *> & partitionSet[2]) {
-    if (!flag || visited.contains(node)) return ;
-    if (partitionSet[partition].contains(node)) {
-        flag = false;
-    } else {
-        partitionSet[1-partition].add(node);
-    }
-    visited.add(node);
-    for (ArcType *arc : node->arcs) {
-        visitUsingDFS(flag, arc->finish, 1-partition, visited, partitionSet);
-    }
-}
+   void setCode(int tempCode) {
+       code = tempCode;
+   }
+
+private:
+   std::string name;
+   Set<IntArc *> arcs;
+   int code;
+//   string airportCode;
+   friend class Graph<IntNode, IntArc>;
+};
+
+class IntArc {
+
+public:
+   IntNode *getStart() {
+      return start;
+   }
+
+   IntNode *getFinish() {
+      return finish;
+   }
+
+//   int getDistance() {
+//      return distance;
+//   }
+
+//   void setDistance(int miles) {
+//      distance = miles;
+//   }
+
+private:
+   IntNode *start;
+   IntNode *finish;
+//   int distance;
+   friend class Graph<IntNode,IntArc>;
+};
+
+//Graph<IntNode, IntArc> testGraph;
 
 void q5() {
-    Graph<int, int> testGraph;
-    testGraph.addNode(1);
-    testGraph.addNode(2);
-    testGraph.addNode(3);
-    testGraph.addNode(4);
-    testGraph.addNode(5);
-    testGraph.addNode(6);
-    testGraph.addNode(7);
-    testGraph.addNode(8);
-    testGraph.addNode(9);
-    testGraph.addArc(1,2);
-    testGraph.addArc(2,1);
-    testGraph.addArc(1,3);
-    testGraph.addArc(3,1);
-    testGraph.addArc(4,2);
-    testGraph.addArc(2,4);
-    testGraph.addArc(4,3);
+    Graph<IntNode, IntArc> testGraph;
+    IntNode * node1 = testGraph.addNode("node1");
+    IntNode * node2 = testGraph.addNode("node2");
+    IntNode * node3 = testGraph.addNode("node3");
+    IntNode * node4 = testGraph.addNode("node4");
+    node1->setCode(1);
+    node2->setCode(2);
+    node3->setCode(3);
+    node4->setCode(4);
+    testGraph.addArc(node1,node2);
+    testGraph.addArc(node2,node1);
+    testGraph.addArc(node1,node3);
+    testGraph.addArc(node3,node1);
+    testGraph.addArc(node4,node2);
+    testGraph.addArc(node2,node4);
+    testGraph.addArc(node4,node3);
     std::cout << "Is a bipartite a bipartite? " << isBipartite(testGraph) << std::endl;
-    testGraph.addArc(1,4);
+    testGraph.addArc(node1,node4);
     std::cout << "Is a none-bipartite a bipartite? " << isBipartite(testGraph) << std::endl;
 
 }
