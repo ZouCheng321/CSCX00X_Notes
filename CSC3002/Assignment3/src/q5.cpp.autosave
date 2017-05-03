@@ -71,8 +71,8 @@ void q5() {
     testGraph.addArc(node4,node2);
     testGraph.addArc(node2,node4);
     testGraph.addArc(node4,node3);
-    std::cout << "Is a bipartite a bipartite? " << isBipartite(testGraph)<< std::endl;
+    std::cout << "Is a bipartite a bipartite? " << isBipartite(testGraph)? std::string("true"):std::string("false") << std::endl;
     testGraph.addArc(node1,node4);
-    std::cout << "Is a none-bipartite a bipartite? " << isBipartite(testGraph) << std::endl;
+    std::cout << "Is a none-bipartite a bipartite? " << isBipartite(testGraph)? std::string("true"):std::string("false")  << std::endl;
 
 }
